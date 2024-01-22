@@ -10,7 +10,7 @@ ENV GENERATE_SOURCEMAP=false
 # RUN npm run build:ssr
 RUN ng build --configuration production --base-href /fio --deploy-url /fio/ --output-path=fio
 
-FROM nginxinc/nginx-unprivileged
+FROM nginx:1.17
 
 ## copy nginx conf
 #COPY ./config/nginx.conf /etc/nginx/conf.d/default.conf
