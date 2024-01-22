@@ -1,4 +1,4 @@
-FROM node:slim AS build
+FROM node:16.0.0-slim AS build
 
 WORKDIR /app
 COPY package-lock.json .
@@ -8,7 +8,7 @@ RUN npm install -g @angular/cli@15.2.6
 COPY . .
 ENV GENERATE_SOURCEMAP=false
 # RUN npm run build:ssr
-RUN ng build --configuration production --output-path=fio
+RUN ng build --configuration production --base-href /fio --deploy-url /fio/ --output-path=fio
 
 FROM nginxinc/nginx-unprivileged
 
