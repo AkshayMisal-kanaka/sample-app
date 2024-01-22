@@ -8,7 +8,7 @@ RUN npm install -g @angular/cli@15.2.6
 COPY . .
 ENV GENERATE_SOURCEMAP=false
 # RUN npm run build:ssr
-RUN ng build --configuration production --base-href /fio --deploy-url /fio/ --output-path=fio
+RUN ng build --configuration production --output-path=fio
 
 FROM nginxinc/nginx-unprivileged
 
