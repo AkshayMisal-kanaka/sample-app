@@ -1,4 +1,4 @@
-FROM node:lts-alpine AS build
+FROM node:slim AS build
 
 WORKDIR /app
 COPY package-lock.json .
@@ -16,5 +16,5 @@ FROM nginxinc/nginx-unprivileged
 #COPY ./config/nginx.conf /etc/nginx/conf.d/default.conf
 COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/fio /usr/share/nginx/html/fio
-EXPOSE 80
+EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]
